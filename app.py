@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask import session as login_session
 import pyrebase
 
+
 config = {
   "apiKey": "AIzaSyD3j7p217EVs74H4hI3fw_4Ny_z2AwGjXk",
   "authDomain": "travelpack-88791.firebaseapp.com",
@@ -21,6 +22,27 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 
 #Code goes below here
 
+@app.route('/admin' , methods=['GET' , 'POST'])
+def change():
+  error = ""
+  if request.method== 'POST':
+    letter = request.form['letter']
+    try: 
+        db.child('letter').set({'text':letter})
+        return redirect(url_for('newsl'))
+    except:
+      error = 'somthing went wrong'
+  return render_template('letter.html' , error = error)
+
+
+@app.route('/' , methods = ['GET','POST'])
+def newsl():
+  if request.method=='POST':
+    db.child('Email').push(request.form['email'])
+  letter = db.child('letter').get().val()
+  if letter == None:
+    return render_template('newsletter.html')
+  return render_template('newsletter.html' , letter = letter)
 
 
 
