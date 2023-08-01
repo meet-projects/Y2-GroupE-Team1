@@ -1,0 +1,10 @@
+.container{
+
+    text-align: center;
+    justify-content: center;
+    font-family: serif;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 5%;
+    font-size: 30px;
+}
