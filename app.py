@@ -25,6 +25,7 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 @app.route('/admin' , methods=['GET' , 'POST'])
 def change():
   error = ""
+  mails = db.child('Email').get().val()
   if request.method== 'POST':
     news = request.form['newspaper']
     try: 
@@ -32,6 +33,8 @@ def change():
         return redirect(url_for('newsl'))
     except:
       error = 'somthing went wrong'
+  if mails != None:
+    return render_template('letter.html' , mails = mails)
   return render_template('letter.html' , error = error)
 
 

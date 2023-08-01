@@ -8,7 +8,12 @@
     <form action="/admin" method="POST">
         <label>enter the news</label>
         <br><textarea type = "text" name="newspaper"></textarea>
-        <a ><button type="submit">submit</button></a>
+
+
+            <a href="mailto:{%for i in mails%} {{mails[i]}}, {%endfor%}?subject=NewsLetter">Send Email</a>
+        
+        <a><button type="submit">submit</button></a>
     </form>
+    {{error}}
 </body>
 </html>
