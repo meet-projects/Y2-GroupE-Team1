@@ -5,15 +5,21 @@
     <title>admin</title>
 </head>
 <body>
+    <center>
     <form action="/admin" method="POST">
+        <label>title</label>
+        <br><input type = "text" name="title" placeholder="Title" /><br>
+        <label>Image</label>
+        <br><input type="text" name="img" placeholder="Image link"/><br>
         <label>enter the news</label>
-        <br><textarea type = "text" name="newspaper"></textarea>
+        <br><textarea type = "text" name="text" placeholder="Content"></textarea>
 
-
-            <a href="mailto:{%for i in mails %} {{mails[i]}}, {% endfor %}?subject=NewsLetter">Send Email</a>
+        <br>
+            
         
-        <a><button type="submit">submit</button></a>
+       <button type="submit">submit</button>
     </form>
     {{error}}
+    </center>
 </body>
 </html>

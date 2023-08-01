@@ -9,7 +9,7 @@
     font-size: 30px;
 }
 .footer{
-    padding-top: 80%;
+    padding-top: 60%;
     padding-right: 80%;
     margin: 10px;
 }
@@ -21,4 +21,18 @@ button {
     cursor: pointer;
     font-size: 16px;
     margin-top: 10px;
+}
+.footer {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  float: left;
+}
+#title{
+    font-size: 50px;
 }
