@@ -36,3 +36,23 @@ button {
 #title{
     font-size: 50px;
 }
+
+#text-container{
+    text-align: center;
+    justify-content: center;
+    font-family: serif;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 5%;
+    font-size: 30px;
+}
+
+.text-center{
+    text-align: center;
+    justify-content: center;
+    font-family: serif;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 5%;
+    font-size: 30px;   
+}

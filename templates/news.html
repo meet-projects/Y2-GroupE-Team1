@@ -1,4 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<style>
+    
+.text-center{
+    text-align: center;
+    justify-content: center;
+    font-family: serif;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 5%;
+    font-size: 30px;   
+}
+
+#text-container{
+    text-align: center;
+    justify-content: center;
+    font-family: serif;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 5%;
+    font-size: 30px;
+}
+
+#title{
+    font-size: 50px;
+}
+.footer {
+
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-top: 15%;
+}
+
+</style>
 <div id="text-container" style="color: black">
-      <h1 style="color: black"> {{ article['title'] }}</h1>
-      <h2 style="color:black"> {{article['text']}} </h2>
+      <h1 id = "title"class = "text-center"style="color: black"> {{ article['title'] }}</h1>
+      <h2 class = "text-center" style="color:black"> {{article['text']}} </h2>
 </div>
+
+<footer class = "footer"></footer>
+</body>
