@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask import session as login_session
+from flask_mail import Mail, Message
 import pyrebase
 
 
@@ -18,24 +19,19 @@ auth = firebase.auth()
 db = firebase.database()
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-app.config['SECRET_KEY'] = 'super-secret-key'
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'kostande.siaga@gmail.com'
+app.config['MAIL_PASSWORD'] = 'llvehmkbmsqshamr'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
+
+   # msg = Message('Hello', sender = 'yourId@gmail.com', recipients = ['someone1@gmail.com'])
+   # msg.body = "This is the email body"
+   # mail.send(msg)
 
 #Code goes below here
-
-@app.route('/admin' , methods=['GET' , 'POST'])
-def change():
-  error = ""
-  mails = db.child('Email').get().val()
-  if request.method== 'POST':
-    news = request.form['newspaper']
-    try: 
-        db.child('letter').set({'newspaper': news})
-        return redirect(url_for('newsl'))
-    except:
-      error = 'somthing went wrong'
-  if mails != None:
-    return render_template('letter.html' , mails = mails)
-  return render_template('letter.html' , error = error)
 
 
 @app.route('/' , methods = ['GET','POST'])
@@ -46,6 +42,28 @@ def newsl():
   if letter == None:
     return render_template('newsletter.html')
   return render_template('newsletter.html' , letter = letter)
+
+@app.route('/admin' , methods=['GET' , 'POST'])
+def change():
+  error = ""
+  mails = db.child('Email').get().val()
+  if request.method == 'POST':
+    news = request.form['newspaper']
+    # try: 
+    recipients=[]
+    db.child('letter').set({'newspaper': news})
+    for i in mails : 
+      recipients.append(mails[i])
+    msg = Message('newsletter' , sender= ' kostande.siaga@gmail.com' , recipients = recipients)
+    msg.body = news
+    mail.send(msg)
+    return redirect(url_for('newsl'))
+    # except:
+    error = 'somthing went wrong'
+  if mails != None:
+    return render_template('letter.html' , mails = mails , error = error)
+  return render_template('letter.html' , error = error)
+
 
 
 

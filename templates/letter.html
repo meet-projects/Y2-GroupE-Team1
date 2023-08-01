@@ -10,7 +10,7 @@
         <br><textarea type = "text" name="newspaper"></textarea>
 
 
-            <a href="mailto:{%for i in mails%} {{mails[i]}}, {%endfor%}?subject=NewsLetter">Send Email</a>
+            <a href="mailto:{%for i in mails %} {{mails[i]}}, {% endfor %}?subject=NewsLetter">Send Email</a>
         
         <a><button type="submit">submit</button></a>
     </form>
