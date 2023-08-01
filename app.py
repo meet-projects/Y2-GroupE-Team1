@@ -26,10 +26,9 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 def change():
   error = ""
   if request.method== 'POST':
-    letter = request.form['letter']
     news = request.form['newspaper']
     try: 
-        db.child('letter').set({'text':letter, 'newspaper': news})
+        db.child('letter').set({'newspaper': news})
         return redirect(url_for('newsl'))
     except:
       error = 'somthing went wrong'
