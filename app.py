@@ -66,7 +66,7 @@ def change():
     <body>
     <h1>{title}</h1>
     <p>{news}</p>
-    <p><a href="travlerpack.org/news/{unique_key}">Read more on our website!</a></p>
+    <p><a href="http://127.0.0.1:5000/news/{unique_key}">Read more on our website!</a></p>
     </body>
     </html>
     """
