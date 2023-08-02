@@ -3,23 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <title>admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <center>
-    <form action="/admin" method="POST">
-        <label>title</label>
-        <br><input type = "text" name="title" placeholder="Title" /><br>
-        <label>Image</label>
-        <br><input type="text" name="img" placeholder="Image link"/><br>
-        <label>enter the news</label>
-        <br><textarea type = "text" name="text" placeholder="Content"></textarea>
+    <style type="text/css">
+        body {
+            background-color: #f1f1f1;
+            font-family: 'Roboto', sans-serif;
+        }
 
-        <br>
-            
-        
-       <button type="submit">submit</button>
-    </form>
-    {{error}}
+        .sty {
+            font-size: 20px;
+            margin: auto;
+            padding-top: 20%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+
+        input {
+            font-size: 18px;
+            border: 3px solid lightslategrey;
+            width: 350px;
+            height: 20px;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        textarea {
+            font-size: 18px;
+            border: 3px solid lightslategrey;
+            width: 350px;
+            height: 100px;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        button {
+            border: none;
+            width: 120px;
+            height: 40px;
+            background-color: #008CBA;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005F7F;
+        }
+
+        label {
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+            color: #444;
+        }
+
+        /* Added animation for the form */
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .sty {
+            animation: fadeInOut 0.5s ease-in-out;
+        }
+
+        .footer {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black;
+            position: fixed;
+            bottom: 0;
+            left: 0; /* Added left: 0 to fill the entire width */
+            right: 0; /* Added right: 0 to fill the entire width */
+            padding-top: 6%;
+        }
+    </style>
+    <center>
+        <div class="sty">
+            <form action="/admin" method="POST">
+                <label>Title</label>
+                <br><input type="text" name="title" placeholder="Title" /><br>
+                <label>Image</label>
+                <br><input type="text" name="img" placeholder="Image link"/><br>
+                <label>Enter The News</label>
+                <br><textarea type="text" name="text" placeholder="Content"></textarea>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <footer class="footer"></footer>
+        {{error}}
     </center>
 </body>
 </html>
+
